@@ -1,0 +1,5 @@
+* @phablo200
+*.js @phablo200
+*.yml @phablo210
+
+/public/ @phablo200
