@@ -50,7 +50,7 @@ jobs:
           zip -r coverage.zip ./coverage
 
       - name: Create a Release
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
@@ -59,7 +59,7 @@ jobs:
         run: npx surge --project ./build --domain capricious-structure.surge.sh
       - name: Staging to Production
         if: github.event_name == 'push' && github.ref == 'refs/head/master'
-        run: npx surge --project ./build --domain quick-snails.surge.sh
+        run: npx surge --projdct ./build --domain quick-snails.surge.sh
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
